@@ -11,12 +11,16 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -37,16 +41,17 @@ Box(modifier = Modifier
     .background(Color(0xfff5f5f5))){
     HorizontalPager(state = pagerStater) {
         page ->  when(page){
-            0 -> Pagina1()
-            1 -> Pagina2()
-            2 -> Pagina3(navegation)
+            0 -> Pagina1(pagerStater)
+            1 -> Pagina2(pagerStater)
+            2 -> Pagina3(navegation, pagerStater)
         }
     }
 }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun Pagina1(){
+fun Pagina1(pagerState: PagerState){
     Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Top) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
             Image(painter = painterResource(id = R.drawable.agricultura), contentDescription = "", modifier = Modifier.padding(55.dp))
@@ -68,11 +73,30 @@ fun Pagina1(){
                 fontSize = 18.sp
             )
         }
+        Puntos(pagerState)
+
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun Pagina2(){
+fun Puntos(pagerState: PagerState) {
+    Row(modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center) {
+        repeat(pagerState.pageCount){
+            var color  = if (pagerState.currentPage == it) Color.Black else Color.Gray
+            Box(modifier = Modifier
+                .padding(2.dp)
+                .size(12.dp)
+                .clip(CircleShape)
+                .background(color))
+        }
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun Pagina2(pagerState: PagerState){
     Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Top) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
             Image(painter = painterResource(id = R.drawable.agricultura2), contentDescription = "", modifier = Modifier.padding(60.dp))
@@ -94,11 +118,13 @@ fun Pagina2(){
                 fontSize = 18.sp
             )
         }
+        Puntos(pagerState)
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun Pagina3(navegation: NavHostController){
+fun Pagina3(navegation: NavHostController, pagerState: PagerState){
     Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Top) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
             Image(painter = painterResource(id = R.drawable.agricultura3), contentDescription = "", modifier = Modifier.padding(40.dp))
@@ -125,6 +151,7 @@ fun Pagina3(navegation: NavHostController){
                 Text(text = "A la otra pagina")
             }
         }
+        Puntos(pagerState)
     }
 }
 
