@@ -38,7 +38,7 @@ fun BiggerLazyRow(){
     
     LazyRow(modifier = Modifier
         .fillMaxWidth()
-        .padding(20.dp)){
+        .padding(20.dp).height(150.dp)){
         items(items){item ->
             Image(painter = painterResource(id = item), contentDescription = "")
         }
@@ -61,22 +61,7 @@ fun SimpleLazyRow(){
 
 @Composable
 fun SimpleLazyColumn(){
-    val items = listOf("Tellus netus vehicula turpis viverra consequat ultrices vel ante " +
-            "magna, luctus commodo euismod inceptos ultricies aliquam " +
-            "condimentum vestibulum scelerisque, bibendum sociosqu " +
-            "pharetra senectus eu leo sed semper."+
-            "Tellus netus vehicula turpis viverra consequat ultrices vel ante " +
-            "magna, luctus commodo euismod inceptos ultricies aliquam " +
-            "condimentum vestibulum scelerisque, bibendum sociosqu " +
-            "pharetra senectus eu leo sed semper."+
-            "Tellus netus vehicula turpis viverra consequat ultrices vel ante " +
-            "magna, luctus commodo euismod inceptos ultricies aliquam " +
-            "condimentum vestibulum scelerisque, bibendum sociosqu " +
-            "pharetra senectus eu leo sed semper."+
-            "Tellus netus vehicula turpis viverra consequat ultrices vel ante " +
-            "magna, luctus commodo euismod inceptos ultricies aliquam " +
-            "condimentum vestibulum scelerisque, bibendum sociosqu " +
-            "pharetra senectus eu leo sed semper.")
+    val items = listOf("En Granjas Peter, nos enorgullece ofrecerte una selección de productos 100% colombianos, directamente desde nuestras tierras a tu mesa. Huevos frescos, plátanos maduros y más, todos cultivados con amor y cuidado, sin añadidos artificiales. ¡Con nosotros, no dejes de disfrutar lo mejor de la naturaleza colombiana!\n¿Buscas opciones saludables y auténticas? En Granjas Peter, te ofrecemos una amplia variedad de productos naturales colombianos que deleitarán tu paladar y alimentarán tu cuerpo. Desde la tierra a tu hogar, cada producto refleja nuestra pasión por la calidad y el respeto por el medio ambiente.\nSiente el vínculo con la naturaleza en cada bocado. En Granjas Peter, cultivamos nuestros productos con métodos tradicionales y respetuosos con el medio ambiente. Con cada compra, apoyas a agricultores locales y contribuyes a la preservación de nuestra herencia colombiana.\n¿Quieres darle a tu familia lo mejor de la tierra? Descubre nuestra gama de productos naturales colombianos, cultivados con cuidado y amor por generaciones de agricultores. Desde la siembra hasta la cosecha, cada paso se realiza con dedicación para ofrecerte lo mejor de nuestra tierra.")
 
     LazyColumn(modifier = Modifier
         .padding(10.dp)

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
@@ -19,6 +20,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -54,34 +56,31 @@ Box(modifier = Modifier
 fun Pagina1(pagerState: PagerState){
     Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Top) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-            Image(painter = painterResource(id = R.drawable.agricultura), contentDescription = "", modifier = Modifier.padding(55.dp))
+            Image(painter = painterResource(id = R.drawable.agricultura), contentDescription = "", modifier = Modifier.height(250.dp))
         }
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-            Text(text = "Títulos",
+            Text(text = "Sobre Nosotros",
                 modifier = Modifier.padding(10.dp),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold)
         }
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
             Text(
-                text = "Tellus netus vehicula turpis viverra consequat ultrices vel ante " +
-                        "magna, luctus commodo euismod inceptos ultricies aliquam " +
-                        "condimentum vestibulum scelerisque, bibendum sociosqu " +
-                        "pharetra senectus eu leo sed semper.",
+                text = "Siente el vínculo con la naturaleza en cada bocado. En Granjas Peter, cultivamos nuestros productos con métodos tradicionales y respetuosos con el medio ambiente. Con cada compra, apoyas a agricultores locales y contribuyes a la preservación de nuestra herencia colombiana.",
                 modifier = Modifier.padding(20.dp),
                 textAlign = TextAlign.Justify,
                 fontSize = 18.sp
             )
         }
-        Puntos(pagerState)
+        Puntos(pagerState, 177)
 
     }
 }
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun Puntos(pagerState: PagerState) {
-    Row(modifier = Modifier.fillMaxWidth(),
+fun Puntos(pagerState: PagerState, data: Int) {
+    Row(modifier = Modifier.fillMaxWidth().padding(top = data.dp),
         horizontalArrangement = Arrangement.Center) {
         repeat(pagerState.pageCount){
             var color  = if (pagerState.currentPage == it) Color.Black else Color.Gray
@@ -99,26 +98,24 @@ fun Puntos(pagerState: PagerState) {
 fun Pagina2(pagerState: PagerState){
     Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Top) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-            Image(painter = painterResource(id = R.drawable.agricultura2), contentDescription = "", modifier = Modifier.padding(60.dp))
+            Image(painter = painterResource(id = R.drawable.agricultura2), contentDescription = "", modifier = Modifier.height(250.dp))
         }
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-            Text(text = "Títulos",
+            Text(text = "Nuestros Productos",
                 modifier = Modifier.padding(10.dp),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold)
         }
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
             Text(
-                text = "Tellus netus vehicula turpis viverra consequat ultrices vel ante " +
-                        "magna, luctus commodo euismod inceptos ultricies aliquam " +
-                        "condimentum vestibulum scelerisque, bibendum sociosqu " +
-                        "pharetra senectus eu leo sed semper.",
+                text = "Descubre el auténtico sabor de Colombia en cada bocado. Nuestros productos, cultivados con esmero en tierras colombianas, son el resultado de un proceso totalmente natural. Desde la yuca hasta la cebolla, cada ingrediente es cultivado sin químicos ni pesticidas, garantizando frescura y calidad incomparables.",
+
                 modifier = Modifier.padding(20.dp),
                 textAlign = TextAlign.Justify,
                 fontSize = 18.sp
             )
         }
-        Puntos(pagerState)
+        Puntos(pagerState, 160)
     }
 }
 
@@ -127,20 +124,17 @@ fun Pagina2(pagerState: PagerState){
 fun Pagina3(navegation: NavHostController, pagerState: PagerState){
     Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Top) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-            Image(painter = painterResource(id = R.drawable.agricultura3), contentDescription = "", modifier = Modifier.padding(40.dp))
+            Image(painter = painterResource(id = R.drawable.agricultura3), contentDescription = "", modifier = Modifier.height(250.dp))
         }
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-            Text(text = "Títulos",
-                modifier = Modifier.padding(10.dp),
+            Text(text = "Todo Es 100% Natural",
+                modifier = Modifier.padding(9.dp),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold)
         }
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
             Text(
-                text = "Tellus netus vehicula turpis viverra consequat ultrices vel ante " +
-                        "magna, luctus commodo euismod inceptos ultricies aliquam " +
-                        "condimentum vestibulum scelerisque, bibendum sociosqu " +
-                        "pharetra senectus eu leo sed semper.",
+                text = "¿Quieres darle a tu familia lo mejor de la tierra? Descubre nuestra gama de productos naturales colombianos, cultivados con cuidado y amor por generaciones de agricultores. Desde la siembra hasta la cosecha, cada paso se realiza con dedicación para ofrecerte lo mejor de nuestra tierra.",
                 modifier = Modifier.padding(20.dp),
                 textAlign = TextAlign.Justify,
                 fontSize = 18.sp
@@ -151,7 +145,7 @@ fun Pagina3(navegation: NavHostController, pagerState: PagerState){
                 Text(text = "A la otra pagina")
             }
         }
-        Puntos(pagerState)
+        Puntos(pagerState, 137)
     }
 }
 
